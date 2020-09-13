@@ -1,0 +1,126 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=	, initial-scale=1.0">
+
+	<title>Document</title>
+	
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="topnav" id="navbar">
+  <a class="active" href="/">Home</a>
+  
+  <a href="/data">Create Post</a>
+ 
+ 
+  <a href="/contact">Contact</a>
+  <a href="/about">About</a>
+</div>
+    
+     	{% for nam in nams %}
+      <br>
+       <div style="background-color: #efedf5; width: 1200px;margin: auto;border-radius: 20px">
+
+     	&nbsp&nbsp
+     	<h3 style="color:#2B2B52">&nbsp&nbsp&nbsp{{nam.id}} &nbsp  {{nam.name}}</h3>
+      <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{nam.test}}</p>
+     	<p style="font-size: 20px;padding-left: 40px;padding-right: 40px;padding-top: 20px;padding-bottom: 20px;text-align: justify;text-align-last:start;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{nam.asdf}}</p>
+       <div class="delmod" style="display: inline-flex;width: 1200px">
+        <form action="/{{nam.id}}/" method="post" style="margin: auto; ">
+          {%csrf_token %}
+
+          <input type="submit" name=nam.id value="Delete" style="background-color:#de2323; border-radius: 10px; float: right;width:300px;height: 40px;border-color: white"> &nbsp &nbsp
+        </form>
+
+          <form action="data/{{nam.id}}/" method="post" style="margin: auto; ">
+          {%csrf_token %}
+          <input type="submit" name="dsd" value="Modify" style="background-color: #0e8f28; width:300px;height: 40px; border-radius: 10px; float: left;border-color: white;">
+          
+        
+        </form>
+        </div>
+       
+      
+      </div>
+      <br>
+      
+     	{% endfor%}
+      
+
+     <style>
+     	/* Add a black background color to the top navigation */
+.topnav {
+  background-color: #b37b04;
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #F0DF87;
+  color: black;
+}
+.delmod input:hover{
+  background-color: red;
+  color: black;
+}
+
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #E71C23;
+  color: white;
+
+  .sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .content {
+  padding-top: 60px;
+}
+}
+
+     </style>
+
+     <script type="text/javascript">
+       window.onscroll = function() {myFunction()};
+
+// Get the navbar
+var navbar = document.getElementById("navbar");
+
+// Get the offset position of the navbar
+var sticky = navbar.offsetTop;
+
+// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
+     </script>
+
+	
+</body>
+</html>
